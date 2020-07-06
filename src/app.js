@@ -5,6 +5,7 @@ const express = require("express");
 const hbs = require("hbs");
 const { error } = require("console");
 const app = express();
+const port = process.env.PORT || 3000;
 
 //-------------PATH SECTION ------------------------------------------//
 const publicDirectoryPath = path.join(__dirname, "../public"); // get the public folder path
@@ -62,6 +63,6 @@ app.get("*", (req, res) => {
 //--------------------------ROUTE SECTION -----------------------------------//
 
 //------------Start the server---------------//
-app.listen(3000, () => {
-  console.log("Server is on 3000");
+app.listen(port, () => {
+  console.log("Server is on " + port);
 });

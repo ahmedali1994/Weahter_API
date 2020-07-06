@@ -29,21 +29,19 @@ weatherForm.addEventListener("submit", (e) => {
   city.textContent = "Loading...";
 
   const location = search.value;
-  fetch("http://localhost:3000/weather?address=" + location).then(
-    (response) => {
-      response.json().then((data) => {
-        //json().then !== json.then
-        if (data.error) {
-          city.textContent = data.error;
-          temp.textContent = "";
-        } else {
-          city.textContent = data.name;
-          temp.textContent = data.temp + "℉";
-          dec.textContent = data.weatherdes;
-        }
-      });
-    }
-  );
+  fetch("/weather?address=" + location).then((response) => {
+    response.json().then((data) => {
+      //json().then !== json.then
+      if (data.error) {
+        city.textContent = data.error;
+        temp.textContent = "";
+      } else {
+        city.textContent = data.name;
+        temp.textContent = data.temp + "℉";
+        dec.textContent = data.weatherdes;
+      }
+    });
+  });
 });
 
 const clear = () => {
